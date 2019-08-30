@@ -13,10 +13,9 @@ import javax.persistence.Table;
 @Table(name = "instructor_detail")
 public class InstructorDetail {
 
-	//annotate the class as an entitiy and map to db table
+	//annotate the class as an entity and map to db table
 	
 	//define the fields
-
 	
 	//annotate the fields with db column names
 	
@@ -26,7 +25,6 @@ public class InstructorDetail {
 	
 	//generate toString method
 	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -39,7 +37,12 @@ public class InstructorDetail {
 	private String hobby;
 
 	//add new field for instructor (also add getters /setters)
-	@OneToOne(mappedBy = "instructorDetail" , cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "instructorDetail" , cascade = { 
+															CascadeType.DETACH, 
+															CascadeType.MERGE, 
+															CascadeType.PERSIST, 
+															CascadeType.REFRESH
+														})
 	private Instructor instructor;	
 	
 	public Instructor getInstructor() {

@@ -16,6 +16,7 @@ public class TestJdbc {
 		try {
 		
 			System.out.println("Connecting to database" + jdbcUrl);
+			@SuppressWarnings("unused")
 			Connection myCon = DriverManager.getConnection(jdbcUrl, user, pass);
 			
 			System.out.println("Connection Successful!");
